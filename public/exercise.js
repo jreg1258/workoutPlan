@@ -1,3 +1,4 @@
+// grabbing the necessary DOM elements to update 
 const workoutTypeSelect = document.querySelector("#type");
 const cardioForm = document.querySelector(".cardio-form");
 const resistanceForm = document.querySelector(".resistance-form");
@@ -17,7 +18,9 @@ const newWorkout = document.querySelector(".new-workout")
 let workoutType = null;
 let shouldNavigateAway = false;
 
+// async function to initialize a workout 
 async function initExercise() {
+  // creating a variable for a workout 
   let workout;
 
   if (location.search.split("=")[1] === undefined) {
