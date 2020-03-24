@@ -14,7 +14,9 @@ module.exports = function(app) {
 
   // route to post a new workout
   app.post("/api/workouts", ({ body }, res) => {
-    console.log(body)
+    if (Workout.findOne({day: { $gte: Date.now() }})) {
+    Workout.findOneAndUpdate({day: { $gte: Date.now() }}, {$push: {exercise: body}})
+    }
     Workout.create(body)
       .then(results => {
         console.log(results)
