@@ -6,20 +6,12 @@ const workoutSchema = new Schema({
     type: Date,
     default: Date.now()
   },
-<<<<<<< HEAD
-<<<<<<< HEAD
+
   tDuration: {
     type: Number
   },
-  exercises: [{
-=======
   exercises: [
     {
->>>>>>> parent of 4f42a6b... added updated stat tracking
-=======
-  exercises: [
-    {
->>>>>>> parent of 4f42a6b... added updated stat tracking
       type: {
         type: String,
         trim: true,

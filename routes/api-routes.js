@@ -14,18 +14,9 @@ module.exports = function(app) {
 
   // route to post a new workout
   app.post("/api/workouts", ({ body }, res) => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     Workout.create(body,{$push: {exercises: body}})
-=======
-=======
->>>>>>> parent of 4f42a6b... added updated stat tracking
-=======
     console.log(body)
->>>>>>> parent of 8a81427... updated routes
     Workout.create(body)
->>>>>>> parent of 4f42a6b... added updated stat tracking
       .then(results => {
         res.json(results);
       })
@@ -37,18 +28,9 @@ module.exports = function(app) {
   // route to update a workout
   app.put("/api/workouts/:id", ({ params, body }, res) => {
     // find the id to update the database 
-<<<<<<< HEAD
-<<<<<<< HEAD
     console.log(body)
     Workout.findByIdAndUpdate({ _id : params.id }, 
-      {$push: {exercises: [{
-            "type": body.type,
-            "name": body.name,
-            distance: body.distance,
-            weight: body.weight,
-            reps: body.reps,
-            sets: body.sets,
-            duration: body.duration
+      {$push: {exercises: [{body
       }]}})
       .then(()=>{
         Workout.findByIdAndUpdate({ _id : params.id }, {$inc:{tDuration: body.duration}}
@@ -59,23 +41,6 @@ module.exports = function(app) {
               .then(results => {
                 res.json(results)
         })  
-=======
-    Workout.findByIdAndUpdate({ _id : params.id }, body)
-      .then(() => {
-        // have to do another .then to return a promise that updates the front-end
-=======
-    Workout.findByIdAndUpdate({ _id : params.id }, body)
-      .then(() => {
-        // have to do another .then to return a promise that updates the front-end
->>>>>>> parent of 4f42a6b... added updated stat tracking
-        Workout.findOne({ _id: params.id })
-        .then(results => {
-          res.json(results)
-        })
-<<<<<<< HEAD
->>>>>>> parent of 4f42a6b... added updated stat tracking
-=======
->>>>>>> parent of 4f42a6b... added updated stat tracking
       })
       .catch(err => {
         res.status(400).json(err)
