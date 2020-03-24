@@ -14,10 +14,7 @@ module.exports = function(app) {
 
   // route to post a new workout
   app.post("/api/workouts", ({ body }, res) => {
-    if (Workout.findOne({day: { $gte: Date.now() }})) {
-    Workout.findOneAndUpdate({day: { $gte: Date.now() }}, {$push: {exercise: body}})
-    }
-    Workout.create(body)
+    Workout.create(body,{$push: {exercises: body}})
       .then(results => {
         console.log(results)
         res.json(results);
@@ -30,16 +27,24 @@ module.exports = function(app) {
   // route to update a workout
   app.put("/api/workouts/:id", ({ params, body }, res) => {
     // find the id to update the database 
-    Workout.findByIdAndUpdate({ _id : params.id }, body)
+    console.log(body)
+    Workout.findByIdAndUpdate({ _id : params.id }, 
+      {$push: {exercises: [{
+            "type": body.type,
+            "name": body.name,
+            distance: body.distance,
+            weight: body.weight,
+            reps: body.reps,
+            sets: body.sets,
+            duration: body.duration
+      }]}})
       .then(()=>{
-        console.log(body)
-        Workout.findByIdAndUpdate({ _id : params.id }, {$inc:{totalDuration: body.duration}}
+        Workout.findByIdAndUpdate({ _id : params.id }, {$inc:{tDuration: body.duration}}
         )})
           .then(() => {
         // have to do another .then to return a promise that updates the front-end
             Workout.findOne({ _id: params.id })
               .then(results => {
-                console.log(results)
                 res.json(results)
         })  
       })
