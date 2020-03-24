@@ -101,20 +101,20 @@ function validateInputs() {
 async function handleFormSubmit(event) {
   event.preventDefault();
 
-  let workoutData = {};
+  let workoutData = {exercises:{}};
 
   if (workoutType === "cardio") {
-    workoutData.type = "cardio";
-    workoutData.name = cardioNameInput.value.trim();
-    workoutData.distance = Number(distanceInput.value.trim());
-    workoutData.duration = Number(durationInput.value.trim());
+    workoutData.exercises.type = "cardio";
+    workoutData.exercises.name = cardioNameInput.value.trim();
+    workoutData.exercises.distance = Number(distanceInput.value.trim());
+    workoutData.exercises.duration = Number(durationInput.value.trim());
   } else if (workoutType === "resistance") {
-    workoutData.type = "resistance";
-    workoutData.name = nameInput.value.trim();
-    workoutData.weight = Number(weightInput.value.trim());
-    workoutData.sets = Number(setsInput.value.trim());
-    workoutData.reps = Number(repsInput.value.trim());
-    workoutData.duration = Number(resistanceDurationInput.value.trim());
+    workoutData.exercises.type = "resistance";
+    workoutData.exercises.name = nameInput.value.trim();
+    workoutData.exercises.weight = Number(weightInput.value.trim());
+    workoutData.exercises.sets = Number(setsInput.value.trim());
+    workoutData.exercises.reps = Number(repsInput.value.trim());
+    workoutData.exercises.duration = Number(resistanceDurationInput.value.trim());
   }
 
   await API.addExercise(workoutData);
