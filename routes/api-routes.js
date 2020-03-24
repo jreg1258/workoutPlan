@@ -14,14 +14,9 @@ module.exports = function(app) {
 
   // route to post a new workout
   app.post("/api/workouts", ({ body }, res) => {
-<<<<<<< HEAD
-    Workout.create(body,{$push: {exercises: body}})
-    console.log(body)
-=======
     if (Workout.findOne({day: { $gte: Date.now() }})) {
     Workout.findOneAndUpdate({day: { $gte: Date.now() }}, {$push: {exercise: body}})
     }
->>>>>>> parent of d4e1c29... fixed routes
     Workout.create(body)
       .then(results => {
         res.json(results);
@@ -34,14 +29,10 @@ module.exports = function(app) {
   // route to update a workout
   app.put("/api/workouts/:id", ({ params, body }, res) => {
     // find the id to update the database 
-<<<<<<< HEAD
     console.log(body)
     Workout.findByIdAndUpdate({ _id : params.id }, 
       {$push: {exercises: [{body
       }]}})
-=======
-    Workout.findByIdAndUpdate({ _id : params.id }, body)
->>>>>>> parent of d4e1c29... fixed routes
       .then(()=>{
         console.log(body)
         Workout.findByIdAndUpdate({ _id : params.id }, {$inc:{totalDuration: body.duration}}

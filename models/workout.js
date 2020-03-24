@@ -6,12 +6,8 @@ const workoutSchema = new Schema({
     type: Date,
     default: Date.now()
   },
-<<<<<<< HEAD
 
   tDuration: {
-=======
-  totalDuration: {
->>>>>>> parent of d4e1c29... fixed routes
     type: Number
   },
   exercises: [
