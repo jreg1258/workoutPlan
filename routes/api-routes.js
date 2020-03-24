@@ -16,10 +16,14 @@ module.exports = function(app) {
   app.post("/api/workouts", ({ body }, res) => {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     Workout.create(body,{$push: {exercises: body}})
 =======
 =======
 >>>>>>> parent of 4f42a6b... added updated stat tracking
+=======
+    console.log(body)
+>>>>>>> parent of 8a81427... updated routes
     Workout.create(body)
 >>>>>>> parent of 4f42a6b... added updated stat tracking
       .then(results => {
