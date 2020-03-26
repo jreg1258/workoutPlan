@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // using mongoose to connect to database
-mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/workout", { useNewUrlParser: true, useFindAndModify: false});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", { useNewUrlParser: true, useFindAndModify: false});
 
 // bringing in the routes folder 
 require('./routes/api-routes')(app)
