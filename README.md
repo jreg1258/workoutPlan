@@ -19,6 +19,7 @@ A consumer will reach their fitness goals quicker when they track their workout 
 
 Functionality:
 When the user loads the page, they are given the option to create a new workout, or continue with their last workout.
+![](start.png)
 
 The user can:
 
@@ -26,6 +27,12 @@ Add exercises to a previous workout plan.
 
 Add new exercises to a new workout plan.
 
+![](workout.png)
+
 View multiple the combined weight of multiple exercises on the stats page.
 
-Authors
+![](dashboard.png)
+
+Author
+
+Joseph Register https://github.com/jreg1258/ - https://jreg1258.github.io/ResponsivePortfolio/
